@@ -7,34 +7,48 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            /* Fondo de tuerquitas y tornillos (textura técnica) */
+            /* Fondo de tuerquitas y tornillos */
             background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'), 
-                              linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8));
+                              linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85));
             background-color: #f4f4f4;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .card {
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 2px solid #004a99;
         }
         .btn-whatsapp {
             background-color: #25D366;
             color: white;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            transition: 0.3s;
         }
         .btn-whatsapp:hover {
             background-color: #128C7E;
             color: white;
+            transform: scale(1.02);
         }
         .logo {
-            max-width: 180px;
-            margin-bottom: 20px;
+            max-width: 200px;
+            margin-bottom: 15px;
         }
         .header-title {
-            color: #004a99; /* Azul Kyocera aproximado */
-            font-weight: 800;
+            color: #004a99;
+            font-weight: 900;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .footer-credits {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #555;
+            font-weight: bold;
+        }
+        .vibras-tag {
+            color: #e67e22; /* Color vibrante para el crédito */
+            text-decoration: none;
         }
     </style>
 </head>
@@ -44,73 +58,73 @@
     <div class="row justify-content-center">
         <div class="col-md-6 text-center">
             <img src="printersas.PNG" alt="Logo SERVPRINTER SAS" class="logo">
-            <h2 class="header-title mb-4">SOLICITUD DE SERVICIO TÉCNICO</h2>
+            <h2 class="header-title mb-4">SERVPRINTER SAS</h2>
             
             <div class="card p-4 text-start">
                 <form id="serviceForm">
                     <div class="mb-3">
-                        <label class="form-label">Nombre del Cliente</label>
-                        <input type="text" id="nombre" class="form-control" placeholder="Ej: Juan Pérez" required>
+                        <label class="form-label fw-bold">Nombre del Cliente</label>
+                        <input type="text" id="nombre" class="form-control" placeholder="Nombre completo" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Dirección</label>
+                        <label class="form-label fw-bold">Dirección de Entrega/Servicio</label>
                         <input type="text" id="direccion" class="form-control" placeholder="Calle, Barrio, Ciudad" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Celular</label>
-                        <input type="tel" id="celular" class="form-control" placeholder="310 000 0000" required>
+                        <label class="form-label fw-bold">Celular de Contacto</label>
+                        <input type="tel" id="celular" class="form-control" placeholder="Ej: 3162225985" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Servicio Requerido</label>
-                        <select id="servicio" class="form-select" required>
-                            <option value="" selected disabled>Seleccione un servicio...</option>
+                        <label class="form-label fw-bold">¿Qué servicio necesita?</label>
+                        <select id="servicio" class="form-select" required style="cursor: pointer;">
+                            <option value="" selected disabled>👇 Seleccione aquí</option>
                             <option value="Mantenimiento y Reparación Kyocera">🛠️ Mantenimiento y Reparación Kyocera</option>
-                            <option value="Suministros">📑 Suministros</option>
-                            <option value="Repuestos">⚙️ Repuestos</option>
-                            <option value="Alquiler de Impresoras">🖨️ Alquiler de Impresoras</option>
+                            <option value="Suministros">📑 Suministros (Tóner, etc)</option>
+                            <option value="Repuestos">⚙️ Repuestos Originales</option>
+                            <option value="Alquiler de Impresoras">🖨️ Alquiler de Equipos</option>
                         </select>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Modelo de Impresora</label>
-                        <input type="text" id="modelo" class="form-control" placeholder="Ej: Kyocera Ecosys M3655" required>
+                        <label class="form-label fw-bold">Modelo de la Impresora</label>
+                        <input type="text" id="modelo" class="form-control" placeholder="Ej: Ecosys M2040dn" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Observaciones (Falla reportada)</label>
-                        <textarea id="observacion" class="form-control" rows="3" placeholder="Cuéntanos qué le pasa a tu equipo..."></textarea>
+                        <label class="form-label fw-bold">Observación del Problema</label>
+                        <textarea id="observacion" class="form-control" rows="3" placeholder="Describa brevemente la falla..."></textarea>
                     </div>
 
-                    <input type="hidden" id="gps_data" value="Ubicación no proporcionada">
+                    <input type="hidden" id="gps_data" value="No proporcionada">
 
-                    <button type="button" onclick="enviarWhatsApp()" class="btn btn-whatsapp w-100 py-3 mt-3">
-                        🚀 ENVIAR SOLICITUD POR WHATSAPP
+                    <button type="button" onclick="enviarWhatsApp()" class="btn btn-whatsapp w-100 py-3 mt-2">
+                        📲 ENVIAR A SERVPRINTER SAS
                     </button>
                 </form>
             </div>
-            <p class="mt-4 text-muted small">SERVPRINTER SAS - Montería, Córdoba</p>
+
+            <footer class="footer-credits">
+                Desarrollado por <span class="vibras-tag">✨ Vibras Positivas</span><br>
+                &copy; 2026 Todos los derechos reservados
+            </footer>
         </div>
     </div>
 </div>
 
 <script>
-    // Función para obtener ubicación automáticamente al cargar o interactuar
+    // Captura de ubicación
     function obtenerUbicacion() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 const lat = position.coords.latitude;
                 const lon = position.coords.longitude;
                 document.getElementById('gps_data').value = `https://www.google.com/maps?q=${lat},${lon}`;
-            }, function(error) {
-                console.log("El usuario denegó el GPS o hubo un error.");
             });
         }
     }
-
-    // Ejecutar captura de ubicación apenas cargue
     window.onload = obtenerUbicacion;
 
     function enviarWhatsApp() {
@@ -123,21 +137,23 @@
         const gps = document.getElementById('gps_data').value;
 
         if(!nombre || !direccion || !servicio || !modelo) {
-            alert("Por favor rellena los campos principales para despegar.");
+            alert("¡Hey! Faltan datos importantes para procesar la solicitud.");
             return;
         }
 
-        // Estructura del mensaje galáctico
+        // Estructura del mensaje con el crédito de Vibras Positivas
         const mensaje = 
-            `🚀 *NUEVA SOLICITUD DE SERVICIO - SERVPRINTER SAS* 🚀\n\n` +
+            `🛰️ *SOLICITUD DE SERVICIO TÉCNICO* 🛰️\n` +
+            `------------------------------------\n` +
             `👤 *Cliente:* ${nombre}\n` +
             `📍 *Dirección:* ${direccion}\n` +
-            `📞 *Celular:* ${celular}\n\n` +
-            `🛠️ *SERVICIO:* ${servicio}\n` +
+            `📞 *Celular:* ${celular}\n` +
             `🖨️ *Modelo:* ${modelo}\n` +
-            `📝 *Detalles:* ${observacion}\n\n` +
-            `🌍 *Ubicación GPS:* ${gps}\n\n` +
-            `_Enviado desde la App Web_`;
+            `🛠️ *Servicio:* ${servicio}\n` +
+            `📝 *Falla:* ${observacion}\n\n` +
+            `🌍 *Ubicación Exacta:* ${gps}\n` +
+            `------------------------------------\n` +
+            `✨ _App desarrollada por *Vibras Positivas* (Derechos de Autor)_`;
 
         const telefono = "573162225985";
         const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(mensaje)}`;
